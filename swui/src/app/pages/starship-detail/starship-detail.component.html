@@ -1,3 +1,44 @@
-<p>
-  starship-detail works!
-</p>
+<div *ngIf="type === 1">
+  No se encontró su Nave
+</div>
+
+
+<div *ngIf="type === 2">
+  <div class="container">
+    <h4> {{ content.name }} </h4>
+    <hr>
+    <h5> {{ content.starship_class }} </h5>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && eval.name.errors }" />
+            <div *ngIf="submitted && eval.name.errors" class="invalid-feedback">
+                <div *ngIf="eval.name.errors.required"> El nombre es necesario </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Pasajeros</label>
+            <input type="text" formControlName="passengers" class="form-control" [ngClass]="{ 'is-invalid': submitted && eval.passengers.errors }" />
+            <div *ngIf="submitted && eval.passengers.errors" class="invalid-feedback">
+                <div *ngIf="eval.passengers.errors.required">Los pasajeros son necesarios</div>
+                <div *ngIf="eval.passengers.errors.pattern">Los pasajeros deben ser números mayores a 0</div>
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Manufacturado por </label>
+            <input type="text" formControlName="manufacturer" class="form-control" [ngClass]="{ 'is-invalid': submitted && eval.manufacturer.errors }" />
+            <div *ngIf="submitted && eval.manufacturer.errors" class="invalid-feedback">
+                <div *ngIf="eval.manufacturer.errors.required">Manufacturado, es necesario </div> 
+            </div>
+        </div>
+ 
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Enviar el formulario</button>
+        </div>
+    </form>
+
+
+  </div>
+</div>

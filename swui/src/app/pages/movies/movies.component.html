@@ -1,3 +1,23 @@
-<p>
-  movies works!
-</p>
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Película</th>
+        <th scope="col">Número de la película</th>
+        <th scope="col">Director</th>
+        <th scope="col">Fecha de estreno</th>
+        <th>Consultar</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="movies">
+      <tr *ngFor="let movie of movies.results">
+        <th> {{ movie.title }} </th>
+        <th> {{ movie.episode_id }} </th> 
+        <th> {{ movie.director }} </th>
+        <th> {{ movie.release_date }} </th>
+        <th> <button class="btn btn-sm btn-primary" 
+          (click)="detailsForm( movie.episode_id )"
+        > Detalles </button> </th>
+      </tr>
+     
+    </tbody>
+  </table>

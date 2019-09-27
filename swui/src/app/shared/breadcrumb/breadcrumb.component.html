@@ -1,0 +1,7 @@
+<nav aria-label="breadcrumb" class="p-3">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/']" >Inicio</a></li>
+    <li *ngIf="evalRoute() === 'movie'" class="breadcrumb-item active">Película</li>
+    <li *ngIf="evalRoute() === 'starship'" class="breadcrumb-item active" aria-current="page">Naves</li>
+  </ol>
+</nav>

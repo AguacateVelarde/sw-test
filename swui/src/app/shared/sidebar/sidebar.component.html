@@ -1,0 +1,10 @@
+<div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading text-center">
+      <img src="assets/logon.png" width="90" height="44" class="d-inline-block align-top" alt="">
+  </div>
+  <div class="list-group list-group-flush">
+    <a href="#" [routerLink]="['/']"  [ngClass]="{'active': evalRoute() === '' }"  class="list-group-item list-group-item-action bg-light">Inicio</a>
+    <a href="#" [routerLink]="['/movie']"  [ngClass]="{'active': evalRoute() === 'movie' }" class="list-group-item list-group-item-action bg-light">Películas</a>
+    <a href="#" [routerLink]="['/starship']"   [ngClass]="{'active': evalRoute() === 'starship' }" class="list-group-item list-group-item-action bg-light">Naves</a>
+  </div>
+</div>
