@@ -3,55 +3,214 @@
   "info": {
     "title": "Star wars Test API",
     "version": "v1",
-    "description":"APi for SW"
+    "description": "API for SW"
   },
   "paths": {
-    "/form": {
+    "/api/v1/form": {
       "post": {
-        "tags":[
-          "v1"
-       ],
+        "tags": ["v1"],
         "operationId": "listVersionsv2",
         "summary": "List API versions",
         "produces": ["application/json"],
-        "parameters": [{
-          "name": "Form",
-          "in" : "body",
-          "description": "Form data",
-          "schema" :{
-            "type" : "object",
-            "properties" : {
-              "name" :{
-                "type": "string",
-                "example" : ""
-              },
-              "manufacturer" : {
-                "type": "string",
-                "example" : ""
-              },
-              "passengers" : {
-                "type": "number",
-                "example" : 0
+        "parameters": [
+          {
+            "name": "Form",
+            "in": "body",
+            "description": "Form data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Death Star"
+                },
+                "manufacturer": {
+                  "type": "string",
+                  "example": "Imperial Department of Military Research, Sienar Fleet Systems"
+                },
+                "passengers": {
+                  "type": "number",
+                  "example": 843342
+                }
               }
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response. Insert the form",
+            "examples": {
+              "application/json": "{\n \"message\": \"Ok\",\n \"code_status\": 200 \n}"
+            }
+          },
+          "400": {
+            "description": "400 response. Missing parameters",
+            "examples": {
+              "application/json": " {\n  \"message\": \"Faltan parámetros\",\n  \"code_status\": 4001,\n  \"param\": {\n    \"name\": \"\",\n    \"passengers\": 0\n   }\n }\n"
+            }
+          },
+          "500": {
+            "description": "500 response. System error",
+            "examples": {
+              "application/json": "\n{\n  \"message\": \"Error insertando los formularios\",\n  \"code_status\": 5001,\n  \"error\": {}\n}"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["v1"],
+        "operationId": "listVersionsv2",
+        "summary": "List API versions",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "200 response. get all forms",
+            "examples": {
+              "application/json": "{\n \"message\": \"Ok\",\n \"code_status\": 200,\n \"data\": [] \n}"
+            }
+          },
+          "500": {
+            "description": "500 response. System error",
+            "examples": {
+              "application/json": "\n{\n  \"message\": \"Error obteniendo los formularios\",\n  \"code_status\": 5001,\n  \"error\": {}\n}"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/form/{formId}": {
+      "get": {
+        "tags": ["v1"],
+        "operationId": "listVersionsv2",
+        "summary": "List API versions",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "formId",
+            "in": "path",
+            "description": "Form id, for get specific form",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response. get all forms",
+            "examples": {
+              "application/json": "{\n \"message\": \"Ok\",\n \"code_status\": 200,\n \"data\": [] \n}"
+            }
+          },
+          "400": {
+            "description": "400 response. Missing parameters",
+            "examples": {
+              "application/json": " {\n  \"message\": \"Faltan parámetros\",\n  \"code_status\": 4001,\n  \"param\": {\n    \"name\": \"\",\n    \"passengers\": 0\n   }\n }\n"
+            }
+          },
+          "500": {
+            "description": "500 response. System error",
+            "examples": {
+              "application/json": "\n{\n  \"message\": \"Error obteniendo los formularios\",\n  \"code_status\": 5001,\n  \"error\": {}\n}"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["v1"],
+        "operationId": "listVersionsv2",
+        "summary": "List API versions",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "formId",
+            "in": "path",
+            "description": "Form id, for get specific form",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "Form",
+            "in": "body",
+            "description": "Form data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Death Star"
+                },
+                "manufacturer": {
+                  "type": "string",
+                  "example": "Imperial Department of Military Research, Sienar Fleet Systems"
+                },
+                "passengers": {
+                  "type": "number",
+                  "example": 843342
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response. get all forms",
+            "examples": {
+              "application/json": "{\n \"message\": \"Ok\",\n \"code_status\": 200,\n \"data\": [] \n}"
+            }
+          },
+          "400": {
+            "description": "400 response. Missing parameters",
+            "examples": {
+              "application/json": " {\n  \"message\": \"Faltan parámetros\",\n  \"code_status\": 4001,\n  \"param\": {\n    \"name\": \"\",\n    \"passengers\": 0\n   }\n }\n"
+            }
+          },
+          "500": {
+            "description": "500 response. System error",
+            "examples": {
+              "application/json": "\n{\n  \"message\": \"Error obteniendo los formularios\",\n  \"code_status\": 5001,\n  \"error\": {}\n}"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["v1"],
+        "operationId": "listVersionsv2",
+        "summary": "List API versions",
+        "produces": ["application/json"],
+        "parameters" : [{
+          "name": "formId",
+          "in": "path",
+          "description": "Form id, for get specific form",
+          "required" : true,
+          "schema": {
+            "type": "integer"
           }
         }],
         "responses": {
           "200": {
-            "description": "200 300 response",
+            "description": "200 response. get all forms",
             "examples": {
-              "application/json": "{\n    \"versions\": [\n        {\n            \"status\": \"CURRENT\",\n            \"updated\": \"2011-01-21T11:33:21Z\",\n            \"id\": \"v2.0\",\n            \"links\": [\n                {\n                    \"href\": \"http://127.0.0.1:8774/v2/\",\n                    \"rel\": \"self\"\n                }\n            ]\n        },\n        {\n            \"status\": \"EXPERIMENTAL\",\n            \"updated\": \"2013-07-23T11:33:21Z\",\n            \"id\": \"v3.0\",\n            \"links\": [\n                {\n                    \"href\": \"http://127.0.0.1:8774/v3/\",\n                    \"rel\": \"self\"\n                }\n            ]\n        }\n    ]\n}"
+              "application/json": "{\n \"message\": \"Ok\",\n \"code_status\": 200,\n \"data\": [] \n}"
             }
-          },
-          "300": {
-            "description": "200 300 response",
+          }, 
+          "400": {
+            "description": "400 response. Missing parameters",
             "examples": {
-              "application/json": "{\n    \"versions\": [\n        {\n            \"status\": \"CURRENT\",\n            \"updated\": \"2011-01-21T11:33:21Z\",\n            \"id\": \"v2.0\",\n            \"links\": [\n                {\n                    \"href\": \"http://127.0.0.1:8774/v2/\",\n                    \"rel\": \"self\"\n                }\n            ]\n        },\n        {\n            \"status\": \"EXPERIMENTAL\",\n            \"updated\": \"2013-07-23T11:33:21Z\",\n            \"id\": \"v3.0\",\n            \"links\": [\n                {\n                    \"href\": \"http://127.0.0.1:8774/v3/\",\n                    \"rel\": \"self\"\n                }\n            ]\n        }\n    ]\n}"
+              "application/json": " {\n  \"message\": \"Faltan parámetros\",\n  \"code_status\": 4001,\n  \"param\": {\n    \"name\": \"\",\n    \"passengers\": 0\n   }\n }\n"
+            }
+          },        
+          "500": {
+            "description": "500 response. System error",
+            "examples": {
+              "application/json": "\n{\n  \"message\": \"Error eliminando los formularios\",\n  \"code_status\": 5001,\n  \"error\": {}\n}"
             }
           }
         }
       }
     }
   },
-  "consumes": ["application/json"]
+  "consumes": ["application/json", "application/x-www-form-urlencoded"]
 }

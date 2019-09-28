@@ -9,9 +9,15 @@
   "author": "Leonardo Velarde",
   "license": "MIT",
   "dependencies": {
+    "@swback/api": "file:api",
+    "@swback/db": "file:db",
+    "@swback/config": "file:config",
+    "@swback/models": "file:models",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "knex": "^0.19.4",
     "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
     "rotating-file-stream": "^1.4.3",
     "swagger-ui-express": "^4.1.1"
   }

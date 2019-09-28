@@ -10,6 +10,7 @@ const morgan = require('morgan')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const rfs = require('rotating-file-stream')
+const router = require( '@swback/api')
 
 const logDirectory = path.join(__dirname, 'log')
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
@@ -22,9 +23,7 @@ app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors())
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('hi')
-})
+app.use( '/api/v1', router )
 
 server.on('listening', () => {
     console.log(`Server running on port ${PORT}`)
