@@ -4,18 +4,21 @@
   "description": "Backend for Swui",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "DB_USER=root DB_PASSWORD=root DB_DATABASE=starwars DB_PORT=3306 DB_HOST=localhost  mocha --timeout 10000 --exit"
   },
   "author": "Leonardo Velarde",
   "license": "MIT",
   "dependencies": {
     "@swback/api": "file:api",
-    "@swback/db": "file:db",
     "@swback/config": "file:config",
+    "@swback/db": "file:db",
     "@swback/models": "file:models",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.19.4",
+    "mocha": "^6.2.0",
     "morgan": "^1.9.1",
     "mysql": "^2.17.1",
     "rotating-file-stream": "^1.4.3",

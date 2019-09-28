@@ -12,7 +12,7 @@ var putForm = async ( req, res )=> {
     
     let [ data, error ] = await Form.updateForm(req.params.id, { name, manufacturer, passengers } )
                           .then( data => [data, null]).catch( error => [ null, error] ) 
-    if( error ){
+    if( error || isNaN( req.params.id ) ){
         return res.status(500).json({
             message : 'Error actualizando los formularios',
             code_status : 5001,

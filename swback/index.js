@@ -30,3 +30,5 @@ server.on('listening', () => {
 })
 
 server.listen(PORT)
+
+module.exports = app
