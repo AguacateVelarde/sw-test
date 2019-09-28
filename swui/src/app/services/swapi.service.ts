@@ -31,7 +31,6 @@ export class SwapiService {
           title: movie.title
         }
       })
-      console.log( movies )
       return movie;
   }
 

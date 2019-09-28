@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormService } from 'src/app/services/form.service';
 
 enum TypeError {
   UNKNOW,
@@ -22,10 +23,14 @@ export class StarshipDetailComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
+  errormsn:string = ''
+  status:string = ''
+
    constructor(
     private route : ActivatedRoute,
     private swapi : SwapiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private formService : FormService
   ) { 
     
   }
@@ -66,7 +71,27 @@ export class StarshipDetailComponent implements OnInit {
       if (this.registerForm.invalid)
           return;
       console.log( 'Send form to my API')
+      console.log( this.registerForm.value )
+
+      this.formService.insertForm(this.registerForm.value)
+      .subscribe(
+        data => this.saveForm( data ),
+        error => this.handlerForm( error )
+      )
+
   }
+
+  saveForm( data ){
+    console.log( data )
+    this.status = 'Ok'
+    this.errormsn = ''
+  }
+
+  handlerForm( error ){
+    this.errormsn = error.error.message
+    this.status = ''
+  }
+
 
   errorHandler( error ){
     this.type = TypeError.ERROR_404

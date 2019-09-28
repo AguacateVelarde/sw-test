@@ -48,7 +48,6 @@ export class StarshipsComponent implements OnInit {
   }
   openForm( starship_url ){
     let id_starship = starship_url.split( '/' )[5]
-    console.log( id_starship )
     this.router.navigate(['/starship', id_starship ])
   }
 

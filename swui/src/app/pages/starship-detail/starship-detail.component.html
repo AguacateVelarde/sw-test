@@ -39,6 +39,14 @@
         </div>
     </form>
 
+    <div *ngIf="status === 'Ok'" class="alert alert-primary" role="alert">
+            ¡Gracias por enviarnos el formulario!
+    </div>
+
+    <div *ngIf="errormsn != ''" class="alert alert-danger" role="alert">
+            {{ errormsn }}
+    </div>
+
 
   </div>
 </div>
